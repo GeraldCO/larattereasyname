@@ -15,10 +15,10 @@
     <div class="row">
         @forelse($messages as $message)
             <div class="col-md-6">
-            <img src="{{$message['image']}}" alt="" class="img-thumbnail">
+            <img src="{{$message->image}}" alt="" class="img-thumbnail">
             <p class="card-text">
-                {{ $message['content'] }}
-            <a href="/mesagges/{{$message['id']}}">Leer mas</a>
+                {{ $message->content }}
+            <a href="/messages/{{$message->id}}">Leer mas</a>
             </p>
             </div>
         @empty
