@@ -18,3 +18,6 @@ Route::get('/messages/{message}',
 
 Route::post('/message/create', 
         'MessagesController@create');
+
+Auth::routes();
+
