@@ -15,7 +15,14 @@
         <form action="/message/create" method="post">
             <div class="form-group">
                 {{ csrf_field() }}
-                <input type="text" name="message" class="form-control" placeholder="Que estas pensando?">
+                
+                <input type="text" name="message" class="form-control @if($errors->has('message')) is-invalid @endif" placeholder="Que estas pensando?"/>
+                @if ($errors->any())
+                    @foreach ($errors->get('message') as $error) <!-- en todos los pedidos tenemos una variable errors que es una variable que contiene una variable de tipo message value-->
+                    <div class="invalid-feedback"> {{$error}} </div>
+                    @endforeach
+                @endif
+                
             </div>
         </form>
     </div>
