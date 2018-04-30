@@ -2,7 +2,6 @@
 @section('content')
     <div class="jumbotron text-center">
         Laratter
-
     <nav>
         <ul class="nav nav-pills">
             <li class="nav-item">
