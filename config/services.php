@@ -34,5 +34,10 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+    'facebook'=>[
+        'client_id'=> '189513938360426',
+        'client_secret' => '157f1cd05a571ecd9ee14d925a145c85',
+        'redirect' => 'https://5ee21012.ngrok.io'
+    ]
 
 ];

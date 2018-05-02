@@ -9,7 +9,16 @@
     Seguidores <span class="badge badge-secondary">{{ $user->followers->count() }}</span>
 </a>
 @if(Auth::check())
+
+@if(Gate::allows('dms', $user))
+    <form action="/{{ $user->username }}/dms">
+        <input type="text" class="form-control">
+        <button class="btn btn-success" type="submit">Enviar dms</button>
+    </form>
+@endif
+
     @if(Auth::User()->isFollowing($user))
+
     <form action="/{{$user->username}}/unfollow" method="post">
         {{ csrf_field() }}
         @if(session('success'))
