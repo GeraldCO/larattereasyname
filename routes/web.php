@@ -13,12 +13,7 @@
 
 Route::get('/', 'PagesController@home');
 
-Route::get('/messages/{message}', 
-        'MessagesController@show');
-
-Route::post('/message/create', 
-        'MessagesController@create')
-        ->middleware('auth');
+Route::get('/messages/{message}', 'MessagesController@show');
 
 Auth::routes();
 
@@ -28,10 +23,19 @@ Route::get('/auth/facebook/callback', 'SocialAuthController@callback');
 Route::get('/{username}', 'UsersController@show');
 
 Route::get('/{username}/follows', 'UsersController@follows');
-
 Route::get('/{username}/followers', 'UsersController@followers');
 
-Route::post('/{username}/follow', 'UsersController@follow')->middleware('auth');
 
-Route::post('/{username}/unfollow', 'UsersController@unfollow');
+
+Route::group(['middleware'=>'auth'], function(){
+        Route::post('/{username}/follow', 'UsersController@follow');
+        Route::get('conversations/{conversation_id}', 'UsersController@showConversation');
+        Route::post('/{username}/unfollow', 'UsersController@unfollow');
+
+        Route::post('/{username}/dms', 'UsersController@sendPrivateMessage');
+        Route::post('/message/create', 'MessagesController@create');
+});
+
+
+
 

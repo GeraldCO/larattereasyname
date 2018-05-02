@@ -11,8 +11,9 @@
 @if(Auth::check())
 
 @if(Gate::allows('dms', $user))
-    <form action="/{{ $user->username }}/dms">
-        <input type="text" class="form-control">
+    <form action="/{{ $user->username }}/dms" method="POST">
+        {{csrf_field() }}
+        <input type="text" class="form-control" name="message">
         <button class="btn btn-success" type="submit">Enviar dms</button>
     </form>
 @endif
