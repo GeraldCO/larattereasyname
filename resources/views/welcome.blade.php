@@ -7,6 +7,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="/">Home</a>
             </li>
+            <li class="nav-item">
+                <form action="/messages">
+                    <div class="input-group">
+                            <input type="text" class="form-control" name="query" placeholder="Buscar..." />
+                            <button type="submit" class="btn btn-outline-success" > Buscar </button>
+                    </div>    
+                </form>
+            </li>
         </ul>
     </nav>
     </div>

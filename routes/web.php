@@ -20,10 +20,13 @@ Auth::routes();
 Route::get('/auth/facebook', 'SocialAuthController@facebook');
 Route::get('/auth/facebook/callback', 'SocialAuthController@callback');
 
+Route::get('/messages', 'MessagesController@search');
+
 Route::get('/{username}', 'UsersController@show');
 
 Route::get('/{username}/follows', 'UsersController@follows');
 Route::get('/{username}/followers', 'UsersController@followers');
+
 
 
 

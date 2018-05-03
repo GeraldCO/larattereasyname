@@ -11,7 +11,7 @@ use App\User;
 class UsersController extends Controller
 {
     public function show($username){
-        throw new \Exception("simulando un error");
+        
 
         $user = $this->findByUsername($username);
         return view('users.show',[
