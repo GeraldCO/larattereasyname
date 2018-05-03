@@ -11,9 +11,11 @@
     </nav>
     </div>
     <div class="row">
-        <form action="/message/create" method="post">
+        <form action="/message/create" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 {{ csrf_field() }}
+
+                <input type="file" name="image">
                 
                 <input type="text" name="message" class="form-control @if($errors->has('message')) is-invalid @endif" placeholder="Que estas pensando?"/>
                 @if ($errors->any())
