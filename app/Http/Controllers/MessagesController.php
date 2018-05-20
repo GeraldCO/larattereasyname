@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreateMessageRequest;
 
 
+
 class MessagesController extends Controller
 {
     public function show(Message $message) {//para que funcione el metodo Route Model Binding el parametro recibido entre {} de la ruta en routes debe tener el mismo nombre que el que estamos pasando en la funcion que se le pasa al controlador como parametro
@@ -33,8 +34,9 @@ class MessagesController extends Controller
 
     public function search(Request $request){
         $query = $request->input('query');
-        $messages= Message::with('user')->where('content', 
-                'LIKE', "%$query%")->get();
+        //$messages= Message::with('user')->where('content',  'LIKE', "%$query%")->get();     //esta linea la reemplazamos por las busquedas con algolia y search
+        $messages= Message::search($query)->get();
+        $messages->load('user');
         return  view('messages.index', [
             'messages'=>$messages
         ]);

@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
+
 
 class Message extends Model
 {
+    use Searchable;
+
     protected $guarded = [];
 
     public function user(){
@@ -17,6 +21,13 @@ class Message extends Model
             return $image;
         }
         return \Storage::disk('public')->url($image);
-        
     }
+
+    public function toSearchableArray(){
+        $this->load('user');
+        return $this->toArray();
+    }
+
+
+
 }
