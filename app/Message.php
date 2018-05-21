@@ -29,7 +29,9 @@ class Message extends Model
     }
 
     public function responses(){
-        return $this->hasMany(Response::class)->latest();
+        return $this->hasMany(Response::class)
+                    ->with('user')
+                    ->latest();
     }
 
 
