@@ -39,6 +39,7 @@ Route::group(['middleware'=>'auth'], function(){
 
         Route::post('/{username}/dms', 'UsersController@sendPrivateMessage');
         Route::post('/message/create', 'MessagesController@create');
+        Route::get('/api/notifications', 'UsersController@notifications');
 });
 
 
