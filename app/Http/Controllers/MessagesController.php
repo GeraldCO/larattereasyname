@@ -5,6 +5,7 @@ use App\Message;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateMessageRequest;
+use Cloudder;
 
 
 
@@ -23,11 +24,14 @@ class MessagesController extends Controller
     {
         $user = $request->user();
         $image = $request->file('image');
+        Cloudder::upload($request->file('image'));
+        $result=Cloudder::getResult();
+        $url=$result['url'];
 
         $message= Message::create([
             'user_id'=> $user->id,
             'content' => $request->input('message'),
-            'image'=> $image->store('messages', 'public'),
+            'image'=> $url,
         ]);        
         return redirect('/messages/'.$message->id);
     }
